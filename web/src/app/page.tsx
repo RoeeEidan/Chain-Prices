@@ -20,13 +20,6 @@ function timeAgo(iso: string) {
   return `${h}h ago`;
 }
 
-function sortKeys(data: Awaited<ReturnType<typeof getPrices>>) {
-  const keys = Object.keys(data);
-  const head = ['BTC', 'ETH'].filter(k => keys.includes(k));
-  const tail = keys.filter(k => !head.includes(k)).sort();
-  return [...head, ...tail];
-}
-
 export default async function Home() {
   const data = await getPrices();;
 
@@ -48,22 +41,11 @@ export default async function Home() {
             </TableRow>
           </TableHeader>
           <TableBody className="[&>tr:nth-child(odd)]:bg-gray-50/60">
-            {sortKeys(data).map((key) => {
-              const row = data[key];
+            {data.map(({ name, error, price, updated }) => {
 
-              if (!row) return (
-                <TableRow key={key}>
-                  <TableCell className="font-medium">{key}</TableCell>
-                  <TableCell className="text-gray-400">—</TableCell>
-                  <TableCell>
-                    No data
-                  </TableCell>
-                </TableRow>
-              );
-
-              if ('error' in row) return (
-                <TableRow key={key}>
-                  <TableCell className="font-medium">{row.name}</TableCell>
+              if (error || !price || !updated) return (
+                <TableRow key={name}>
+                  <TableCell className="font-medium">{name}</TableCell>
                   <TableCell>-</TableCell>
                   <TableCell>
                     Error
@@ -72,12 +54,12 @@ export default async function Home() {
               );
 
               return (
-                <TableRow key={key}>
-                  <TableCell className="font-medium">{row.name}</TableCell>
-                  <TableCell className="font-mono text-base tabular-nums">{formatUSD(row.price)}</TableCell>
+                <TableRow key={name}>
+                  <TableCell className="font-medium">{name}</TableCell>
+                  <TableCell className="font-mono text-base tabular-nums">{formatUSD(price)}</TableCell>
                   <TableCell className="text-gray-600">
-                    <time title={new Date(row.updated).toISOString()}>
-                      {timeAgo(row.updated)}
+                    <time title={new Date(updated).toISOString()}>
+                      {timeAgo(updated)}
                     </time>
                   </TableCell>
                 </TableRow>
