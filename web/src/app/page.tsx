@@ -47,9 +47,7 @@ export default async function Home() {
                 <TableRow key={name}>
                   <TableCell className="font-medium">{name}</TableCell>
                   <TableCell>-</TableCell>
-                  <TableCell>
-                    Error
-                  </TableCell>
+                  <TableCell>Error</TableCell>
                 </TableRow>
               );
 
@@ -57,11 +55,7 @@ export default async function Home() {
                 <TableRow key={name}>
                   <TableCell className="font-medium">{name}</TableCell>
                   <TableCell className="font-mono text-base tabular-nums">{formatUSD(price)}</TableCell>
-                  <TableCell className="text-gray-600">
-                    <time title={new Date(updated).toISOString()}>
-                      {timeAgo(updated)}
-                    </time>
-                  </TableCell>
+                  <TableCell className="text-gray-600"><time>{timeAgo(updated)}</time></TableCell>
                 </TableRow>
               );
             })}
