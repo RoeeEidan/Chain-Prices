@@ -25,10 +25,10 @@ const ABI = [
 const COINS: { name: string, address: `0x${string}` }[] = [
     { name: 'Bitcoin', address: '0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c' },
     { name: 'Ethereum', address: '0x5f4ec3df9cbd43714fe2740f5e3616155c5b8419' },
-    { name: 'Chainlink', address: '0x2c1d072e956AFFC0D435Cb7AC38EF18d24d9127c' },
-    { name: 'Uniswap', address: '0x553303d460EE0afB37EdFf9bE42922D8FF63220e' },
     { name: 'Aave', address: '0x547a514d5e3769680Ce22B2361c10Ea13619e8a9' },
     { name: 'Compound', address: '0xdbd020CAeF83eFd542f4De03e3cF0C28A4428bd5' },
+    { name: 'Chainlink', address: '0x2c1d072e956AFFC0D435Cb7AC38EF18d24d9127c' },
+    { name: 'Uniswap', address: '0x553303d460EE0afB37EdFf9bE42922D8FF63220e' },
     { name: 'Synthetix', address: '0xdc3ea94cd0ac27d9a86c180091e7f78c683d3699' },
     { name: 'Yearn Finance', address: '0x7c5d4f8345e66f68099581db340cd65b078c41f4' },
     { name: 'USD Coin', address: '0x8fFfFfd4AfB6115b954Bd326cbe7B4BA576818f6' },
