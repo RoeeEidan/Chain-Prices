@@ -8,7 +8,8 @@
     "build": "tsc",
     "watch": "tsc -w",
     "test": "jest",
-    "cdk": "cdk"
+    "cdk": "cdk",
+    "backfill": "ts-node scripts/backfill.ts --days 7"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.152",
@@ -25,6 +26,9 @@
   },
   "dependencies": {
     "cdk-nextjs-standalone": "^4.3.0",
-    "dotenv": "^17.2.2"
+    "dotenv": "^17.2.2",
+    "ethers": "^6.15.0",
+    "@aws-sdk/client-dynamodb": "^3.666.0",
+    "@aws-sdk/lib-dynamodb": "^3.666.0"
   }
 }
