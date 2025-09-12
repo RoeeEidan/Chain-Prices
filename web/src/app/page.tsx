@@ -37,15 +37,17 @@ export default async function Home() {
             <TableRow className="text-left">
               <TableHead className="w-[14rem] text-gray-600">Name</TableHead>
               <TableHead className="w-[12rem] text-gray-600">Price (USD)</TableHead>
+              <TableHead className="w-[14rem] text-gray-600">Market Cap (USD)</TableHead>
               <TableHead className="w-[10rem] text-gray-600">Updated</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody className="[&>tr:nth-child(odd)]:bg-gray-50/60">
-            {data.map(({ name, error, price, updated }) => {
+            {data.map(({ name, error, price, updated, marketCap }) => {
 
               if (error || !price || !updated) return (
                 <TableRow key={name}>
                   <TableCell className="font-medium">{name}</TableCell>
+                  <TableCell>-</TableCell>
                   <TableCell>-</TableCell>
                   <TableCell>Error</TableCell>
                 </TableRow>
@@ -55,6 +57,7 @@ export default async function Home() {
                 <TableRow key={name}>
                   <TableCell className="font-medium">{name}</TableCell>
                   <TableCell className="font-mono text-base tabular-nums">{formatUSD(price)}</TableCell>
+                  <TableCell className="font-mono text-base tabular-nums">{marketCap ? formatUSD(marketCap) : '-'}</TableCell>
                   <TableCell className="text-gray-600"><time>{timeAgo(updated)}</time></TableCell>
                 </TableRow>
               );
