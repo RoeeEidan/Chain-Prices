@@ -7,7 +7,7 @@ export const fetchCache = 'force-no-store';
 
 // --------- helpers ----------
 function formatUSD(n: number) {
-  return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 }).format(n);
+  return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: n < 10 ? 6 : 2 }).format(n);
 }
 function timeAgo(iso: string) {
   const ms = Date.now() - new Date(iso).getTime();
